@@ -1,10 +1,13 @@
 <?php
+
+namespace classes\db;
+
 class db
 {
-    private const host = "localhost";
-    private const user = "root";
-    private const password = "";
-    private const dbName = "cmbd234";
+    public const host = "localhost";
+    public const user = "root";
+    public const password = "";
+    public const dbName = "cmbd234";
     public $conn;
 
     public function __construct()
@@ -15,5 +18,13 @@ class db
     public function __destruct()
     {
         unset($this->conn);
+    }
+
+    public function sanitize($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 }

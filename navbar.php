@@ -21,26 +21,29 @@ $filename = basename($_SERVER['PHP_SELF'])
                 <li class="nav-item">
                     <a class="nav-link <?= $filename === 'contact.php' ? 'active' : null ?>" href="./contact.php">Contact</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= $filename === 'signin.php' ? 'active' : null ?>" href="./signin.php">Sign In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= $filename === 'signup.php' ? 'active' : null ?>" href="./signup.php">Sign Up</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Update Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Profile Picture</a></li>
-                        <li><a class="dropdown-item" href="#">Change Password</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="./signout.php">Sign out</a></li>
-                    </ul>
-                </li>
+                <?php if (!isset($_SESSION['email'])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?= $filename === 'signin.php' ? 'active' : null ?>" href="./signin.php">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= $filename === 'signup.php' ? 'active' : null ?>" href="./signup.php">Sign Up</a>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?= $_SESSION['name'] ?>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./update-profile.php">Update Profile</a></li>
+                            <li><a class="dropdown-item" href="./profile-picture.php">Profile Picture</a></li>
+                            <li><a class="dropdown-item" href="./change-password.php">Change Password</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./signout.php">Sign out</a></li>
+                        </ul>
+                    </li>
+                <?php } ?>
             </ul>
             <div>
                 <form action="./search.php" class="d-flex input-group" role="search">

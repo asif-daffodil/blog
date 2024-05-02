@@ -1,6 +1,5 @@
 <?php
 require_once "header.php";
-$conn = mysqli_connect("localhost", "root", "", "cmbd234");
 if (isset($_SESSION['email'])) {
     header("location: ./");
 }

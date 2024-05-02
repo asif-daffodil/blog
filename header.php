@@ -1,6 +1,20 @@
 <?php
+$conn = mysqli_connect("localhost", "root", "", "cmbd234");
 session_start();
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+}
+$userInfo;
+function udata()
+{
+    global $userInfo, $email, $conn;
+    $getUserInfo = $conn->query("SELECT * FROM users WHERE email='$email'");
+    $userInfo = $getUserInfo->fetch_object();
+}
+
+udata()
 ?>
+
 <!doctype html>
 <html lang="en">
 

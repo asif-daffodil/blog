@@ -15,6 +15,7 @@ if (isset($_POST['sign123'])) {
             $_SESSION['email'] = $uemail;
             $_SESSION['name'] = $row->name;
             $_SESSION['img'] = $row->img;
+            $_SESSION['role'] = $row->role;
             echo "<script>toastr.success('login successful');setTimeout(()=> location.href='index.php', 2000)</script>";
         } else {
             echo "<script>toastr.error('Invalid password')</script>";

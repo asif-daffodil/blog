@@ -1,0 +1,45 @@
+.adminSidebar{
+    >li{
+        &:hover{
+             >a{
+                color: #fff !important;
+             }
+        }
+        
+    }
+}
+
+.nav-item{
+    position: relative;
+    &:hover{
+        background: #333;
+    }
+    >.subMenu{
+        position: absolute;
+        top: 0;
+        left: 100%;
+        background: #333;
+        display: none;
+        min-width: 180px;
+        list-style: none;
+        padding: 0px;
+        z-index: 200;
+        >li{
+            padding: 6px 10px;
+            width: 100%;
+            >a{
+                color: #fff;
+                text-decoration: none;
+                display: block;
+            }
+            &:hover{
+                background: #212529;
+            }
+        }
+    }
+    &:hover{
+        .subMenu{
+            display: block;
+        }
+    }
+}
